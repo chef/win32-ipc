@@ -1,0 +1,7 @@
+* CHANGES
+* MANIFEST
+* README
+* Rakefile
+* win32-ipc.gemspec
+* lib/win32/ipc.rb
+* test/test_win32_ipc.rb

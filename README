@@ -1,0 +1,34 @@
+= Description
+An abstract base class for Windows synchronization objects.
+
+= Installation
+rake test (optional)
+rake install
+   
+= Synopsis
+There is no synopsis. Don't use this module directly. It is used as the basis
+for other packages, such as win32-mutex, etc.
+
+= Notes
+Originally based on the Win32::Ipc Perl module by Gurusamy Sarathy.
+
+This package is a prerequisite for several other IPC related Windows packages.
+
+= Known Bugs
+None that I know of. Please log any other bug reports on the RubyForge
+project page at http://www.rubyforge.net/projects/win32utils
+
+= License
+Ruby's
+    
+= Copyright
+(C) 2003-2008 Daniel J. Berger, All Rights Reserved
+    
+= Warranty
+This package is provided "as is" and without any express or
+implied warranties, including, without limitation, the implied
+warranties of merchantability and fitness for a particular purpose.
+	
+= Authors
+* Park Heesob
+* Daniel J. Berger
