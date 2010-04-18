@@ -16,7 +16,7 @@ module Win32
       class Error < StandardError; end
 
       # The version of the win32-ipc library
-      VERSION = '0.5.2'
+      VERSION = '0.5.3'
 
       SIGNALED  = 1
       ABANDONED = -1
