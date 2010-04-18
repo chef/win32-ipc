@@ -3,14 +3,23 @@ require 'rake/testtask'
 require 'rbconfig'
 include Config
 
-desc 'Install the win32-ipc package (non-gem)'
-task :install do
-   sitelibdir = CONFIG['sitelibdir']
-   installdir = File.join(sitelibdir, 'win32')
-   file = File.join('lib', 'win32', 'ipc.rb')
-   
-   Dir.mkdir(installdir) unless File.exists?(installdir)
-   FileUtils.cp(file, installdir, :verbose => true)   
+namespace 'gem' do
+  desc 'Delete any .gem files in the current directory'
+  task :clean do
+    Dir['*.gem'].each{ |f| File.delete(f) }
+  end
+
+  desc 'Create the win32-ipc gem'
+  task :create => [:clean] do
+    spec = eval(IO.read('win32-ipc.gemspec')) 
+    Gem::Builder.new(spec).build
+  end
+
+  desc 'Install the win32-ipc gem'
+  task :install => [:create] do
+    file = Dir['*.gem'].first
+    sh "gem install #{file}"
+  end
 end
 
 Rake::TestTask.new do |t|
