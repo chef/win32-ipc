@@ -1,8 +1,9 @@
-== 0.5.3 - ???
+== 0.5.3 - 19-Apr-2010
 * Added a few gem related tasks to the Rakefile, and removed an old install
   task.
 * Removed the inline gem building code from the gemspec. That's now handled
   by a Rake task.
+* Some cosmetic changes to the source code.
 
 == 0.5.2 - 6-Aug-2009
 * License changed to Artistic 2.0.
