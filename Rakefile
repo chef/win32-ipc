@@ -1,14 +1,10 @@
 require 'rake'
 require 'rake/testtask'
-require 'rbconfig'
-include Config
+require 'rake/clean'
+
+CLEAN.include("**/*.gem", "**/*.rbc")
 
 namespace 'gem' do
-  desc 'Delete any .gem files in the current directory'
-  task :clean do
-    Dir['*.gem'].each{ |f| File.delete(f) }
-  end
-
   desc 'Create the win32-ipc gem'
   task :create => [:clean] do
     spec = eval(IO.read('win32-ipc.gemspec')) 
@@ -23,6 +19,8 @@ namespace 'gem' do
 end
 
 Rake::TestTask.new do |t|
-   t.verbose = true
-   t.warning = true
+  t.verbose = true
+  t.warning = true
 end
+
+task :default => :test
