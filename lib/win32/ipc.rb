@@ -22,6 +22,13 @@ module Win32
     SIGNALED  = 1
     ABANDONED = -1
     TIMEOUT   = 0
+    INFINITE  = 0xFFFFFFFF
+
+    WAIT_OBJECT_0    = 0
+    WAIT_TIMEOUT     = 0x102
+    WAIT_ABANDONED   = 128
+    WAIT_ABANDONED_0 = WAIT_ABANDONED
+    WAIT_FAILED      = 0xFFFFFFFF
 
     # The HANDLE object (an unsigned long value).  Mostly provided for
     # subclasses to use internally when needed.
