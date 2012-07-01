@@ -14,6 +14,8 @@ module Win32
     attach_function :WaitForSingleObject, [:ulong, :ulong], :ulong
     attach_function :WaitForMultipleObjects, [:ulong, :pointer, :bool, :ulong], :ulong
 
+    # Error raised by the wait_any or wait_all methods when there
+    # are no objects to wait for.
     class Error < StandardError; end
 
     # The version of the win32-ipc library

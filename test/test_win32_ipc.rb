@@ -35,7 +35,7 @@ class TC_Win32_Ipc < Test::Unit::TestCase
   end
 
   def test_wait_expected_errors
-    assert_raises(Ipc::Error){ @ipc.wait }
+    assert_raises(Errno::ENXIO){ @ipc.wait }
     assert_raises(ArgumentError){ @ipc.wait(1,2) }
   end
 
