@@ -68,6 +68,12 @@ class TC_Win32_Ipc < Test::Unit::TestCase
     assert_not_nil(Ipc::TIMEOUT)
   end
 
+  def test_ffi_methods_are_private
+    assert_not_respond_to(Ipc, :CloseHandle)
+    assert_not_respond_to(Ipc, :WaitForSingleObject)
+    assert_not_respond_to(Ipc, :WaitForMultipleObjects)
+  end
+
   def teardown
     @ipc = nil
   end
