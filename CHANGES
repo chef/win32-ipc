@@ -1,3 +1,8 @@
+== 0.6.0 - 1-Jul-2012
+* Now uses FFI instead of win32-api.
+* If an internal C function fails it raises a SystemCallError (Errno) instead
+  of an Ipc::Error.
+
 == 0.5.3 - 19-Apr-2010
 * Added a few gem related tasks to the Rakefile, and removed an old install
   task.
