@@ -8,7 +8,7 @@
 # You should run this test via the 'rake test' task.
 ##########################################################################
 require 'win32/ipc'
-require 'test/unit'
+require 'test-unit'
 include Win32
 
 class TC_Win32_Ipc < Test::Unit::TestCase
