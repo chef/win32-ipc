@@ -16,10 +16,6 @@ module Win32
 
     private_class_method :CloseHandle, :WaitForSingleObject, :WaitForMultipleObjects
 
-    # Error raised by the wait_any or wait_all methods when there
-    # are no objects to wait for.
-    class Error < StandardError; end
-
     # The version of the win32-ipc library
     VERSION = '0.6.0'
 
@@ -54,8 +50,21 @@ module Win32
     end
 
     # Returns whether or not the IPC object is in a signaled state.
+    #--
+    # This method assumes a single object. You may need to redefine this
+    # to suit your needs in your subclass.
     #
     def signaled?
+      state = WaitForSingleObject(@handle, 0)
+
+      if state == WAIT_FAILED
+        raise SystemCallError.new("WaitForSingleObject", FFI.errno)
+      elsif state == WAIT_OBJECT_0
+        @signaled = true
+      else
+        @signaled = false
+      end
+
       @signaled
     end
 
@@ -76,7 +85,7 @@ module Win32
 
       case wait
         when WAIT_FAILED
-          raise SystemCallError, FFI.errno, "WaitForSingleObject"
+          raise SystemCallError.new("WaitForSingleObject", FFI.errno)
         when WAIT_OBJECT_0
           @signaled = true
           yield if block_given?
@@ -86,7 +95,7 @@ module Win32
         when WAIT_TIMEOUT
           return TIMEOUT
         else
-          raise SystemCallError, FFI.errno, "WaitForSingleObject"
+          raise SystemCallError.new("WaitForSingleObject", FFI.errno)
       end
     end
 
@@ -135,7 +144,7 @@ module Win32
       length = ipc_objects.length
 
       if length == 0
-        raise Error, 'no objects to wait for'
+        raise ArgumentError, 'no objects to wait for'
       end
 
       ptr = FFI::MemoryPointer.new(:ulong, ipc_objects.size)
@@ -151,7 +160,7 @@ module Win32
       )
 
       if wait == WAIT_FAILED
-        raise SystemCallError, FFI.errno, "WaitForMultipleObjects"
+        raise SystemCallError.new("WaitForMultipleObjects", FFI.errno)
       end
 
       # signaled

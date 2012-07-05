@@ -1,7 +1,10 @@
-== 0.6.0 - 1-Jul-2012
+== 0.6.0 - ???
 * Now uses FFI instead of win32-api.
+* The #signaled? method now has a meaningful default implementation.
 * If an internal C function fails it raises a SystemCallError (Errno) instead
   of an Ipc::Error.
+* The Ipc::Error class, although defined for those who wish to still use it
+  in inherited classes, is no longer used internally.
 
 == 0.5.3 - 19-Apr-2010
 * Added a few gem related tasks to the Rakefile, and removed an old install

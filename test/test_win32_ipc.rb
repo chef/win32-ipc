@@ -16,59 +16,67 @@ class TC_Win32_Ipc < Test::Unit::TestCase
     @ipc = Ipc.new(1)
   end
 
-  def test_version
+  test "version is set to expected value" do
     assert_equal('0.6.0', Ipc::VERSION)
   end
 
-  def test_handle
+  test "handle method basic functionality" do
     assert_respond_to(@ipc, :handle)
     assert_equal(1, @ipc.handle)
   end
 
-  def test_signaled
+  test "signaled? method is defined" do
     assert_respond_to(@ipc, :signaled?)
-    assert_equal(false, @ipc.signaled?)
   end
 
-  def test_wait
+  test "wait method is defined" do
     assert_respond_to(@ipc, :wait)
   end
 
-  def test_wait_expected_errors
+  test "wait raises ENXIO if handle is invalid" do
     assert_raises(Errno::ENXIO){ @ipc.wait }
+  end
+
+  test "wait accepts a maximum of one argument" do
     assert_raises(ArgumentError){ @ipc.wait(1,2) }
   end
 
-  def test_wait_any
+  test "wait_any method is defined" do
     assert_respond_to(@ipc, :wait_any)
   end
 
-  def test_wait_any_expected_errors
-    assert_raises(Ipc::Error){ @ipc.wait_any([]) }
+  test "wait_any raises an ArgumentError if the array is empty" do
+    assert_raises(ArgumentError){ @ipc.wait_any([]) }
+  end
+
+  test "wait_any only accepts an array" do
     assert_raises(TypeError){ @ipc.wait_any(1,2) }
   end
 
-  def test_wait_all
+  test "wait_all method is defined" do
     assert_respond_to(@ipc, :wait_all)
   end
 
-  def test_wait_all_expected_errors
-    assert_raises(Ipc::Error){ @ipc.wait_all([]) }
+  test "wait_all raises an ArgumentError if the array is empty" do
+    assert_raises(ArgumentError){ @ipc.wait_all([]) }
+  end
+
+  test "wait_all only accepts an array" do
     assert_raises(TypeError){ @ipc.wait_all(1,2) }
   end
 
-  def test_close
+  test "close method basic functionality" do
     assert_respond_to(@ipc, :close)
     assert_nothing_raised{ @ipc.close }
   end
 
-  def test_constants
+  test "expected constants are defined" do
     assert_not_nil(Ipc::SIGNALED)
     assert_not_nil(Ipc::ABANDONED)
     assert_not_nil(Ipc::TIMEOUT)
   end
 
-  def test_ffi_methods_are_private
+  test "ffi functions are private" do
     assert_not_respond_to(Ipc, :CloseHandle)
     assert_not_respond_to(Ipc, :WaitForSingleObject)
     assert_not_respond_to(Ipc, :WaitForMultipleObjects)
