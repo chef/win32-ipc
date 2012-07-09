@@ -1,4 +1,4 @@
-== 0.6.0 - ???
+== 0.6.0 - 8-Jul-2012
 * Now uses FFI instead of win32-api.
 * The #signaled? method now has a meaningful default implementation.
 * If an internal C function fails it raises a SystemCallError (Errno) instead
