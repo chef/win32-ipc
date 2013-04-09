@@ -1,3 +1,7 @@
+== 0.6.1 - 9-Apr-2013
+* Updated the HANDLE function prototypes in the underlying FFI code. This
+  affects 64 bit versions of Ruby.
+
 == 0.6.0 - 8-Jul-2012
 * Now uses FFI instead of win32-api.
 * The #signaled? method now has a meaningful default implementation.
