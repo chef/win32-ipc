@@ -8,16 +8,19 @@ module Win32
   #
   class Ipc
     extend FFI::Library
+    typedef :ulong, :dword
+    typedef :uintptr_t, :handle
+
     ffi_lib :kernel32
 
-    attach_function :CloseHandle, [:ulong], :bool
-    attach_function :WaitForSingleObject, [:ulong, :ulong], :ulong
-    attach_function :WaitForMultipleObjects, [:ulong, :pointer, :bool, :ulong], :ulong
+    attach_function :CloseHandle, [:handle], :bool
+    attach_function :WaitForSingleObject, [:handle, :dword], :dword
+    attach_function :WaitForMultipleObjects, [:dword, :pointer, :bool, :dword], :dword
 
     private_class_method :CloseHandle, :WaitForSingleObject, :WaitForMultipleObjects
 
     # The version of the win32-ipc library
-    VERSION = '0.6.0'
+    VERSION = '0.6.1'
 
     SIGNALED  = 1
     ABANDONED = -1
