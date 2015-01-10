@@ -15,12 +15,12 @@ module Win32
 
     attach_function :CloseHandle, [:handle], :bool
     attach_function :WaitForSingleObject, [:handle, :dword], :dword
-    attach_function :WaitForMultipleObjects, [:dword, :pointer, :bool, :dword], :dword
+    attach_function :WaitForMultipleObjects, [:dword, :pointer, :bool, :dword], :dword, :blocking => true
 
     private_class_method :CloseHandle, :WaitForSingleObject, :WaitForMultipleObjects
 
     # The version of the win32-ipc library
-    VERSION = '0.6.1'
+    VERSION = '0.6.2'
 
     SIGNALED  = 1
     ABANDONED = -1
