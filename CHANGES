@@ -1,4 +1,7 @@
-== 0.6.2 - 11-Jan-2015
+== 0.6.3 - 10-Jan-2015
+* Declare the FFI prototype for WaitForSingleObject as blocking.
+
+== 0.6.2 - 10-Jan-2015
 * Declare the FFI prototype for WaitForMultipleObjects as blocking.
 
 == 0.6.1 - 9-Apr-2013
