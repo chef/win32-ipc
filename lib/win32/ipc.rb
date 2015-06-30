@@ -115,7 +115,7 @@ module Win32
     #
     def wait_any(ipc_objects, timeout=INFINITE)
       timeout *= 1000 if timeout && timeout != INFINITE
-      wait_for_multiple(ipc_objects, 0, timeout)
+      wait_for_multiple(ipc_objects, false, timeout)
     end
 
     # :call-seq:
@@ -129,7 +129,7 @@ module Win32
     #
     def wait_all(ipc_objects, timeout=INFINITE)
       timeout *= 1000 if timeout && timeout != INFINITE
-      wait_for_multiple(ipc_objects, 1, timeout)
+      wait_for_multiple(ipc_objects, true, timeout)
     end
 
     private
@@ -138,7 +138,7 @@ module Win32
     # +ipc_objects+ are in the signaled state or the +timeout+ interval
     # elapses.
     #
-    def wait_for_multiple(ipc_objects, wait_all=0, timeout=INFINITE)
+    def wait_for_multiple(ipc_objects, wait_all=false, timeout=INFINITE)
       unless ipc_objects.is_a?(Array)
         msg = 'invalid argument - must be an array of Ipc objects'
         raise TypeError, msg
