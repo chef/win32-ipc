@@ -2,7 +2,7 @@ require 'rubygems'
 
 Gem::Specification.new do |spec|
   spec.name      = 'win32-ipc'
-  spec.version   = '0.6.3'
+  spec.version   = '0.6.4'
   spec.authors   = ['Daniel J. Berger', 'Park Heesob']
   spec.license   = 'Artistic 2.0'
   spec.email     = 'djberg96@gmail.com'
@@ -12,7 +12,6 @@ Gem::Specification.new do |spec|
   spec.files     = Dir['**/*'].reject{ |f| f.include?('git') }
 
   spec.extra_rdoc_files  = ['README', 'CHANGES', 'MANIFEST']
-  spec.rubyforge_project = 'win32utils'
 
   spec.add_dependency('ffi')
   spec.add_development_dependency('test-unit')
