@@ -7,8 +7,9 @@ CLEAN.include("**/*.gem", "**/*.rbc")
 namespace 'gem' do
   desc 'Create the win32-ipc gem'
   task :create => [:clean] do
+    require 'rubygems/package'
     spec = eval(IO.read('win32-ipc.gemspec')) 
-    Gem::Builder.new(spec).build
+    Gem::Package.build(spec)
   end
 
   desc 'Install the win32-ipc gem'
