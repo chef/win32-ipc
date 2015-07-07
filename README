@@ -5,13 +5,13 @@ An abstract base class for Windows synchronization objects.
 gem install win32-ipc
    
 = Synopsis
-There is no synopsis. Don't use this module directly. It is used as the basis
+There is no synopsis. Don't use this library directly. It is used as the basis
 for other libraries, such as win32-mutex, etc. Think of it as an interface.
 
 = Notes
 Originally based on the Win32::Ipc Perl module by Gurusamy Sarathy.
 
-This library is a prerequisite for several other IPC related Windows packages.
+This library is a prerequisite for several other IPC related Windows gems.
 
 = Known Bugs
 None that I know of. Please log any other bug reports on the project page
@@ -21,7 +21,7 @@ at https://github.com/djberg96/win32-ipc.
 Artistic 2.0
     
 = Copyright
-(C) 2003-2013 Daniel J. Berger, All Rights Reserved
+(C) 2003-2015 Daniel J. Berger, All Rights Reserved
     
 = Warranty
 This package is provided "as is" and without any express or
