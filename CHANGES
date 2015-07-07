@@ -1,3 +1,7 @@
+== 0.6.5 - 7-Jul-2015
+* Fixed the wait_for_multiple method for x64 platforms. Thanks go to Rafal
+  Bigaj for the spot and patch.
+
 == 0.6.4 - 1-Jul-2015
 * Fixed boolean argument type parameter. Thanks go to Rafal Bigaj for the patch.
 * Updates to gemspec and Rakefile.
