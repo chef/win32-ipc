@@ -144,16 +144,16 @@ module Win32
         raise TypeError, msg
       end
 
-      length = ipc_objects.length
+      length = ipc_objects.size
 
       if length == 0
         raise ArgumentError, 'no objects to wait for'
       end
 
-      ptr = FFI::MemoryPointer.new(:ulong, ipc_objects.size)
+      ptr = FFI::MemoryPointer.new(:pointer, length)
 
-      handles = ipc_objects.map{ |o| o.handle }
-      ptr.write_array_of_ulong(handles)
+      handles = ipc_objects.map(&:handle)
+      ptr.write_array_of_pointer(handles)
 
       wait = WaitForMultipleObjects(
         length,
