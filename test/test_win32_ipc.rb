@@ -17,7 +17,7 @@ class TC_Win32_Ipc < Test::Unit::TestCase
   end
 
   test "version is set to expected value" do
-    assert_equal('0.6.5', Ipc::VERSION)
+    assert_equal('0.6.6', Ipc::VERSION)
   end
 
   test "handle method basic functionality" do
