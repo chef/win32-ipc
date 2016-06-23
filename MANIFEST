@@ -3,5 +3,6 @@
 * README
 * Rakefile
 * win32-ipc.gemspec
+* certs/djberg96_pub.pem
 * lib/win32/ipc.rb
 * test/test_win32_ipc.rb
