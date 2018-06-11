@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.summary    = 'An abstract base class for Windows synchronization objects.'
   spec.test_file  = 'test/test_win32_ipc.rb'
   spec.files      = Dir['**/*'].reject{ |f| f.include?('git') }
-  spec.cert_chain = ['certs/djberg96_pub.pem']
 
   spec.extra_rdoc_files = ['README.md', 'CHANGES', 'MANIFEST']
 
