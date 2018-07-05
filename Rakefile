@@ -1,24 +1,9 @@
+require "rubygems"
 require 'rake'
 require 'rake/testtask'
 require 'rake/clean'
 
 CLEAN.include("**/*.gem", "**/*.rbc")
-
-namespace 'gem' do
-  desc 'Create the win32-ipc gem'
-  task :create => [:clean] do
-    require 'rubygems/package'
-    spec = eval(IO.read('win32-ipc.gemspec')) 
-    spec.signing_key = File.join(Dir.home, '.ssh', 'gem-private_key.pem')
-    Gem::Package.build(spec)
-  end
-
-  desc 'Install the win32-ipc gem'
-  task :install => [:create] do
-    file = Dir['*.gem'].first
-    sh "gem install -l #{file}"
-  end
-end
 
 Rake::TestTask.new do |t|
   t.verbose = true
