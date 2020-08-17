@@ -2,6 +2,11 @@ source "https://rubygems.org"
 
 gemspec
 
+group :test do
+  gem "chefstyle", "1.2.1"
+  gem "rake"
+end
+
 group :docs do
   gem "yard"
   gem "redcarpet"
