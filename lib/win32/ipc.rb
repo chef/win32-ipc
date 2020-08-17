@@ -1,4 +1,4 @@
-require 'ffi'
+require "ffi" unless defined?(FFI)
 
 # The Win32 module serves as a namespace only.
 module Win32
@@ -14,13 +14,13 @@ module Win32
     ffi_lib :kernel32
 
     attach_function :CloseHandle, [:handle], :bool
-    attach_function :WaitForSingleObject, [:handle, :dword], :dword, :blocking => true
-    attach_function :WaitForMultipleObjects, [:dword, :pointer, :bool, :dword], :dword, :blocking => true
+    attach_function :WaitForSingleObject, %i{handle dword}, :dword, blocking: true
+    attach_function :WaitForMultipleObjects, %i{dword pointer bool dword}, :dword, blocking: true
 
     private_class_method :CloseHandle, :WaitForSingleObject, :WaitForMultipleObjects
 
     # The version of the win32-ipc library
-    VERSION = '0.7.0'
+    VERSION = "0.7.0".freeze
 
     SIGNALED  = 1
     ABANDONED = -1
@@ -92,11 +92,11 @@ module Win32
         when WAIT_OBJECT_0
           @signaled = true
           yield if block_given?
-          return SIGNALED
+          SIGNALED
         when WAIT_ABANDONED
-          return ABANDONED
+          ABANDONED
         when WAIT_TIMEOUT
-          return TIMEOUT
+          TIMEOUT
         else
           raise SystemCallError.new("WaitForSingleObject", FFI.errno)
       end
@@ -113,7 +113,7 @@ module Win32
     # objects are signaled, the one with the lowest index is returned.
     # Returns 0 if no objects are signaled.
     #
-    def wait_any(ipc_objects, timeout=INFINITE)
+    def wait_any(ipc_objects, timeout = INFINITE)
       timeout *= 1000 if timeout && timeout != INFINITE
       wait_for_multiple(ipc_objects, false, timeout)
     end
@@ -127,7 +127,7 @@ module Win32
     # Returns the index of the last object signaled. If at least one of the
     # objects is an abandoned mutex, the return value is negative.
     #
-    def wait_all(ipc_objects, timeout=INFINITE)
+    def wait_all(ipc_objects, timeout = INFINITE)
       timeout *= 1000 if timeout && timeout != INFINITE
       wait_for_multiple(ipc_objects, true, timeout)
     end
@@ -138,16 +138,16 @@ module Win32
     # +ipc_objects+ are in the signaled state or the +timeout+ interval
     # elapses.
     #
-    def wait_for_multiple(ipc_objects, wait_all=false, timeout=INFINITE)
+    def wait_for_multiple(ipc_objects, wait_all = false, timeout = INFINITE)
       unless ipc_objects.is_a?(Array)
-        msg = 'invalid argument - must be an array of Ipc objects'
+        msg = "invalid argument - must be an array of Ipc objects"
         raise TypeError, msg
       end
 
       length = ipc_objects.size
 
       if length == 0
-        raise ArgumentError, 'no objects to wait for'
+        raise ArgumentError, "no objects to wait for"
       end
 
       ptr = FFI::MemoryPointer.new(:pointer, length)
