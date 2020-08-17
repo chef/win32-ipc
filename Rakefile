@@ -1,5 +1,5 @@
-require 'rake/testtask'
-require 'rake/clean'
+require "rake/testtask"
+require "rake/clean"
 
 CLEAN.include("**/*.gem", "**/*.rbc")
 
@@ -32,4 +32,4 @@ task :console do
   IRB.start
 end
 
-task :default => :test
+task default: :test

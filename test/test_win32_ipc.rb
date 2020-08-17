@@ -7,8 +7,8 @@
 #
 # You should run this test via the 'rake test' task.
 ##########################################################################
-require 'win32/ipc'
-require 'test-unit'
+require "win32/ipc"
+require "test-unit"
 include Win32
 
 class TC_Win32_Ipc < Test::Unit::TestCase
@@ -17,7 +17,7 @@ class TC_Win32_Ipc < Test::Unit::TestCase
   end
 
   test "version is set to expected value" do
-    assert_equal('0.7.0', Ipc::VERSION)
+    assert_equal("0.7.0", Ipc::VERSION)
   end
 
   test "handle method basic functionality" do
@@ -34,11 +34,11 @@ class TC_Win32_Ipc < Test::Unit::TestCase
   end
 
   test "wait raises ENXIO if handle is invalid" do
-    assert_raises(Errno::ENXIO){ @ipc.wait }
+    assert_raises(Errno::ENXIO) { @ipc.wait }
   end
 
   test "wait accepts a maximum of one argument" do
-    assert_raises(ArgumentError){ @ipc.wait(1,2) }
+    assert_raises(ArgumentError) { @ipc.wait(1, 2) }
   end
 
   test "wait_any method is defined" do
@@ -46,11 +46,11 @@ class TC_Win32_Ipc < Test::Unit::TestCase
   end
 
   test "wait_any raises an ArgumentError if the array is empty" do
-    assert_raises(ArgumentError){ @ipc.wait_any([]) }
+    assert_raises(ArgumentError) { @ipc.wait_any([]) }
   end
 
   test "wait_any only accepts an array" do
-    assert_raises(TypeError){ @ipc.wait_any(1,2) }
+    assert_raises(TypeError) { @ipc.wait_any(1, 2) }
   end
 
   test "wait_all method is defined" do
@@ -58,16 +58,16 @@ class TC_Win32_Ipc < Test::Unit::TestCase
   end
 
   test "wait_all raises an ArgumentError if the array is empty" do
-    assert_raises(ArgumentError){ @ipc.wait_all([]) }
+    assert_raises(ArgumentError) { @ipc.wait_all([]) }
   end
 
   test "wait_all only accepts an array" do
-    assert_raises(TypeError){ @ipc.wait_all(1,2) }
+    assert_raises(TypeError) { @ipc.wait_all(1, 2) }
   end
 
   test "close method basic functionality" do
     assert_respond_to(@ipc, :close)
-    assert_nothing_raised{ @ipc.close }
+    assert_nothing_raised { @ipc.close }
   end
 
   test "expected constants are defined" do
