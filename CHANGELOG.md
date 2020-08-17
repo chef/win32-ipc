@@ -1,5 +1,14 @@
+# win32-ipc Changelog
+<!-- latest_release -->
+<!-- latest_release -->
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 == 0.7.0 - 22-Jun-2016
 * The license is now Apache 2.0.
+<!-- latest_stable_release -->
+
 
 == 0.6.6 - 13-Sep-2015
 * The gem is now signed.
