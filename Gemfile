@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 group :test do
-  gem "chefstyle", "1.4.0"
+  gem "chefstyle", "1.4.2"
   gem "rake"
 end
 
