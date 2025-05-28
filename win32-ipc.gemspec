@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name       = "win32-ipc"
-  spec.version    = "0.7.0"
+  spec.version    = "0.8.0"
   spec.authors    = ["Daniel J. Berger", "Park Heesob"]
   spec.license    = "Apache-2.0"
   spec.email      = "djberg96@gmail.com"
@@ -11,8 +11,9 @@ Gem::Specification.new do |spec|
 
   spec.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
 
-  spec.add_dependency("ffi")
-  spec.add_development_dependency("test-unit")
+  spec.add_dependency "ffi"
+  spec.add_development_dependency "test-unit"
+  spec.add_development_dependency "cookstyle", "~> 8.1"
 
   spec.description = <<-EOF
     The win32-ipc library provides the Win32::IPC class. This is meant to
