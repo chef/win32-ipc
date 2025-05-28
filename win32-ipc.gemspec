@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.homepage   = "http://github.com/chef/win32-ipc"
   spec.summary    = "An abstract base class for Windows synchronization objects."
   spec.test_file  = "test/test_win32_ipc.rb"
-  spec.files      = Dir["**/*"].reject { |f| f.include?("git") }
+  spec.files      = Dir["**/*"].reject { |f| f.include?("git") || f.end_with?(".gem") }
 
   spec.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
 
