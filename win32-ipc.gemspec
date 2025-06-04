@@ -13,7 +13,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "ffi"
   spec.add_development_dependency "test-unit"
-  spec.add_development_dependency "cookstyle", "~> 8.1"
 
   spec.description = <<-EOF
     The win32-ipc library provides the Win32::IPC class. This is meant to
