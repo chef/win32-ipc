@@ -20,7 +20,7 @@ module Win32
     private_class_method :CloseHandle, :WaitForSingleObject, :WaitForMultipleObjects
 
     # The version of the win32-ipc library
-    VERSION = "0.7.0".freeze
+    VERSION = "0.8.0".freeze
 
     SIGNALED  = 1
     ABANDONED = -1
