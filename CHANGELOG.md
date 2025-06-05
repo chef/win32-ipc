@@ -1,7 +1,15 @@
 # win32-ipc Changelog
+<!-- latest_release 0.8.0 -->
+## [win32-ipc-0.8.0](https://github.com/chef/win32-ipc/tree/win32-ipc-0.8.0) (2025-06-05)
+
+#### Merged Pull Requests
+- Updating for Ruby 3.4 and Cookstyle [#47](https://github.com/chef/win32-ipc/pull/47) ([johnmccrae](https://github.com/johnmccrae))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=0.7.0 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Updating for Ruby 3.4 and Cookstyle [#47](https://github.com/chef/win32-ipc/pull/47) ([johnmccrae](https://github.com/johnmccrae)) <!-- 0.8.0 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
