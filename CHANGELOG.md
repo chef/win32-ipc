@@ -1,14 +1,15 @@
 # win32-ipc Changelog
-<!-- latest_release 0.8.1 -->
-## [win32-ipc-0.8.1](https://github.com/chef/win32-ipc/tree/win32-ipc-0.8.1) (2025-09-17)
+<!-- latest_release 0.8.2 -->
+## [win32-ipc-0.8.2](https://github.com/chef/win32-ipc/tree/win32-ipc-0.8.2) (2025-09-17)
 
 #### Merged Pull Requests
-- CHEF-24643 - Standardize - Create CONTRIBUTING.md file with standard template for Chef [#49](https://github.com/chef/win32-ipc/pull/49) ([nandanhegde73](https://github.com/nandanhegde73))
+- CHEF-26036 - Replace CODE_OF_CONDUCT.md file [#50](https://github.com/chef/win32-ipc/pull/50) ([cgunasree08](https://github.com/cgunasree08))
 <!-- latest_release -->
 <!-- release_rollup since=0.7.0 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-26036 - Replace CODE_OF_CONDUCT.md file [#50](https://github.com/chef/win32-ipc/pull/50) ([cgunasree08](https://github.com/cgunasree08)) <!-- 0.8.2 -->
 - CHEF-24643 - Standardize - Create CONTRIBUTING.md file with standard template for Chef [#49](https://github.com/chef/win32-ipc/pull/49) ([nandanhegde73](https://github.com/nandanhegde73)) <!-- 0.8.1 -->
 - Updating for Ruby 3.4 and Cookstyle [#47](https://github.com/chef/win32-ipc/pull/47) ([johnmccrae](https://github.com/johnmccrae)) <!-- 0.8.0 -->
 <!-- release_rollup -->
