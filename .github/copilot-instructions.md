@@ -1,7 +1,9 @@
 # 1. Purpose
+
 Authoritative operational workflow for autonomous AI assistants contributing to this repository. Defines planning, gating, testing, DCO, PR standards, safety guardrails, idempotent re-entry, and failure handling. Humans MAY reference but this document is AI-targeted.
 
 # 2. Repository Structure
+
 ```
 ./
 ├── .expeditor/               # Expeditor release automation config (version bump, changelog, publishing)
@@ -27,10 +29,13 @@ Authoritative operational workflow for autonomous AI assistants contributing to 
 └── test/
     └── test_win32_ipc.rb     # Test::Unit test suite validating public behavior & constants
 ```
+
 Notes:
+
 - Release automation present via `.expeditor` (AI MUST NOT modify without explicit approval).
 
 # 3. Tooling & Ecosystem
+
 - Language: Ruby (target Ruby 3.1 baseline; CI also tests 3.4 on Windows).
 - Test Framework: test-unit.
 - Lint/Style: Cookstyle (Chefstyle) & RuboCop via GitHub Action and Rake `:style` task.
@@ -40,7 +45,9 @@ Notes:
 - Dependency automation: Dependabot + Expeditor.
 
 # 4. Issue (Jira/Tracker) Integration
+
 If an external issue key (e.g., ABC-123) is supplied:
+
 1. Fetch via configured MCP (e.g., atlassian) invocation conceptually: `getIssue ABC-123`.
 2. Parse & present: summary, description, acceptance criteria bullets, issue type, labels/tags, linked issues, story points (if any).
 3. Draft Implementation Plan (see Section 16 template) BEFORE code changes.
@@ -48,7 +55,9 @@ If an external issue key (e.g., ABC-123) is supplied:
 5. Await explicit user "yes" before proceeding (Freeze Point). No code modifications prior to approval.
 
 # 5. Workflow Overview
+
 Phases (sequential & gated):
+
 1. Intake & Clarify
 2. Repository Analysis
 3. Plan Draft
@@ -64,11 +73,14 @@ Each phase ends with: Step Summary + Checklist + prompt: "Continue to next step?
 Non-affirmative response → PAUSE.
 
 # 6. Detailed Step Instructions
+
 Principles:
+
 - Minimal cohesive change per commit.
 - Add/adjust tests with each logic change.
 - Provide mapping (changed logic → test assertions) pre-commit.
 Example Output Block:
+
 ```
 Step: Add boundary guard in wait_for_multiple
 Summary: Added nil handle guard; tests for invalid handle & empty array.
@@ -78,11 +90,14 @@ Checklist:
 - [ ] Tests
 Proceed? (yes/no)
 ```
+
 Rules:
+
 - Abort if user denies proceed.
 - If ambiguity persists after one clarification attempt → Abort per Section 12.
 
 # 7. Branching & PR Standards
+
 - Branch name: EXACT issue key if provided (ABC-123). Else kebab-case ≤40 chars (e.g., `improve-timeout-handling`).
 - Single logical change set per branch.
 - PR must stay Draft until: lint pass + tests pass + coverage mapping provided.
@@ -91,7 +106,9 @@ Rules:
 - Rollback Strategy: typically `git revert <commit-sha>`; mention if feature toggle present (none today).
 
 # 8. Commit & DCO Policy
+
 Commit Message Format:
+
 ```
 TYPE(SCOPE): Subject (ISSUE_KEY)
 
@@ -100,14 +117,18 @@ Rationale explaining what & why; include brief test impact.
 Issue: ISSUE_KEY or none
 Signed-off-by: Full Name <email@domain>
 ```
+
 MUST: DCO sign-off trailer present. Missing → block & request name/email.
 One logical change per commit; may batch trivial style changes.
 
 # 9. Testing & Coverage
+
 - Required mapping table for each commit affecting logic:
+
 ```
 | File | Method/Block | Change Type | Test File | Assertion Reference |
 ```
+
 - Coverage Threshold: ≥80% of changed lines (qualitative reasoning acceptable if tooling absent).
 - Edge Cases (enumerate in plan):
   - Large / boundary inputs (e.g., max object array for `wait_for_multiple`)
@@ -119,7 +140,9 @@ One logical change per commit; may batch trivial style changes.
 - Optionally propose SimpleCov; require user approval before adding.
 
 # 10. Labels Reference
+
 Fetched dynamically (2025-09). Use table below; if labels fetch fails → Abort.
+
 ```
 Name | Description | Typical Use
 ---- | ----------- | -----------
@@ -154,13 +177,17 @@ Platform: RHEL-like | (null) | Platform reference
 Platform: SLES-like | (null) | Platform reference
 Platform: Unix-like | (null) | Platform reference
 ```
+
 Mapping Guidance:
+
 - Bug → Stability / Security / Performance as appropriate.
 - Feature → feat + possibly Integration / Portability labels.
 - Maintenance → chore + dependencies / oss-standards.
 
 # 11. CI / Release Automation Integration
+
 Workflows:
+
 - `lint.yml`: Trigger on PR & push to main; runs Cookstyle/Rubocop on Ubuntu.
 - `unit.yml`: Trigger on PR & push to master (NOTE: branch misalignment; main vs master) matrix (windows-2019, windows-2022) Ruby 3.1 & 3.4 executing tests.
 Release Automation:
@@ -171,7 +198,9 @@ Policy:
 - AI MUST NOT directly edit `.expeditor` configs or workflows without explicit instruction.
 
 # 12. Security & Protected Files
+
 Protected (require explicit user approval before modification):
+
 - LICENSE (if added later), CODE_OF_CONDUCT.md, CODEOWNERS, SECURITY* docs
 - `.expeditor/**`, `.github/workflows/**`, release automation scripts
 - VERSION (only via approved release workflow context)
@@ -184,7 +213,9 @@ Constraints:
 - No new binaries committed.
 
 # 13. Prompts Pattern (Interaction Model)
+
 At each workflow phase output block:
+
 ```
 Step: <NAME>
 Summary: <RESULT>
@@ -194,10 +225,13 @@ Checklist:
 ... (current statuses)
 Continue to next step? (yes/no)
 ```
+
 User must answer "yes" to proceed.
 
 # 14. Validation & Exit Criteria
+
 Task COMPLETE ONLY IF:
+
 1. Feature/fix branch exists & pushed.
 2. Lint/style passes.
 3. Tests pass (all CI matrix relevant where feasible locally).
@@ -210,6 +244,7 @@ Task COMPLETE ONLY IF:
 Unmet → report deltas with remediation guidance.
 
 # 16. Issue Planning Template
+
 ```
 Issue: ABC-123
 Summary: <from issue>
@@ -228,7 +263,9 @@ Proceed? (yes/no)
 ```
 
 # 17. PR Description Canonical Template
+
 If `.github/PULL_REQUEST_TEMPLATE.md` present (yes), AI MUST augment (not replace) by appending sections below if missing:
+
 ```
 <h2>Tests & Coverage</h2>
 <p>Changed lines: N; Estimated covered: ~X%; Mapping complete.</p>
@@ -237,24 +274,31 @@ If `.github/PULL_REQUEST_TEMPLATE.md` present (yes), AI MUST augment (not replac
 <h2>DCO</h2>
 <p>All commits signed off.</p>
 ```
+
 If template absent → fallback HTML template. Do NOT duplicate fallback when template exists.
 
 # 18. Idempotency Rules
+
 On re-entry:
+
 1. Check branch existence: `git rev-parse --verify <branch>`.
 2. Check PR existence: `gh pr list --head <branch>`.
 3. Check uncommitted changes: `git status --porcelain`.
 Produce Delta Summary:
+
 ```
 Added Sections:
 Modified Sections:
 Deprecated Sections:
 Rationale:
 ```
+
 Avoid redoing work; only progress missing phases.
 
 # 19. Failure Handling
+
 Decision Tree:
+
 - Labels fetch fails → Abort: request manual list or auth fix (Retry? yes/no).
 - Issue fetch incomplete (missing summary or description) → Abort per Section 4.
 - Missing acceptance criteria → Prompt: provide or proceed with inferred.
@@ -268,6 +312,7 @@ Risk Classification:
 Rollback Strategy: revert commit `<SHA>`; if multiple commits revert merge commit or sequentially.
 
 # 20. Glossary
+
 - Changed Lines Coverage: Portion of modified lines executed by tests.
 - Implementation Plan Freeze Point: Approval gate before coding.
 - Protected Files: Restricted assets requiring explicit authorization.
@@ -277,6 +322,7 @@ Rollback Strategy: revert commit `<SHA>`; if multiple commits revert merge commi
 - DCO: Developer Certificate of Origin confirmation of rights.
 
 # 21. Quick Reference Commands
+
 ```bash
 # Branch creation
 git checkout -b <BRANCH>
@@ -303,3 +349,49 @@ gh pr create --base main --head <BRANCH> --title "ABC-123: Improve wait error ha
 # Apply labels (examples)
 gh pr edit <PR_NUMBER> --add-label "Aspect: Stability" --add-label "dependencies"
 ```
+
+# 22. AI-Assisted Development & Compliance
+
+- ✅ Create PR with `ai-assisted` label (if label doesn't exist, create it with description "Work completed with AI assistance following Progress AI policies" and color "9A4DFF")
+- ✅ Include "This work was completed with AI assistance following Progress AI policies" in PR description
+
+### Jira Ticket Updates (MANDATORY)
+
+- ✅ **IMMEDIATELY after PR creation**: Update Jira ticket custom field `customfield_11170` ("Does this Work Include AI Assisted Code?") to "Yes"
+- ✅ Use atlassian-mcp tools to update the Jira field programmatically
+- ✅ **CRITICAL**: Use correct field format: `{"customfield_11170": {"value": "Yes"}}`
+- ✅ Verify the field update was successful
+
+### Documentation Requirements
+
+- ✅ Reference AI assistance in commit messages where appropriate
+- ✅ Document any AI-generated code patterns or approaches in PR description
+- ✅ Maintain transparency about which parts were AI-assisted vs manual implementation
+
+### Workflow Integration
+
+This AI compliance checklist should be integrated into the main development workflow Step 4 (Pull Request Creation):
+
+```
+Step 4: Pull Request Creation & AI Compliance
+- Step 4.1: Create branch and commit changes WITH SIGNED-OFF COMMITS
+- Step 4.2: Push changes to remote
+- Step 4.3: Create PR with ai-assisted label
+- Step 4.4: IMMEDIATELY update Jira customfield_11170 to "Yes"
+- Step 4.5: Verify both PR labels and Jira field are properly set
+- Step 4.6: Provide complete summary including AI compliance confirmation
+```
+
+- **Never skip Jira field updates** - This is required for Progress AI governance
+- **Always verify updates succeeded** - Check response from atlassian-mcp tools
+- **Treat as atomic operation** - PR creation and Jira updates should happen together
+- **Double-check before final summary** - Confirm all AI compliance items are completed
+
+### Audit Trail
+
+All AI-assisted work must be traceable through:
+
+1. GitHub PR labels (`ai-assisted`)
+2. Jira custom field (`customfield_11170` = "Yes")
+3. PR descriptions mentioning AI assistance
+4. Commit messages where relevant
