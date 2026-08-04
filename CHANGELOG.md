@@ -1,14 +1,15 @@
 # win32-ipc Changelog
-<!-- latest_release 0.8.3 -->
-## [win32-ipc-0.8.3](https://github.com/chef/win32-ipc/tree/win32-ipc-0.8.3) (2025-11-18)
+<!-- latest_release 0.8.4 -->
+## [win32-ipc-0.8.4](https://github.com/chef/win32-ipc/tree/win32-ipc-0.8.4) (2026-08-04)
 
 #### Merged Pull Requests
-- set up ai assisted development workflow [#51](https://github.com/chef/win32-ipc/pull/51) ([rishichawda](https://github.com/rishichawda))
+- Add GitHub Security Actions Workflow [#48](https://github.com/chef/win32-ipc/pull/48) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
 <!-- latest_release -->
 <!-- release_rollup since=0.7.0 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add GitHub Security Actions Workflow [#48](https://github.com/chef/win32-ipc/pull/48) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 0.8.4 -->
 - set up ai assisted development workflow [#51](https://github.com/chef/win32-ipc/pull/51) ([rishichawda](https://github.com/rishichawda)) <!-- 0.8.3 -->
 - CHEF-26036 - Replace CODE_OF_CONDUCT.md file [#50](https://github.com/chef/win32-ipc/pull/50) ([cgunasree08](https://github.com/cgunasree08)) <!-- 0.8.2 -->
 - CHEF-24643 - Standardize - Create CONTRIBUTING.md file with standard template for Chef [#49](https://github.com/chef/win32-ipc/pull/49) ([nandanhegde73](https://github.com/nandanhegde73)) <!-- 0.8.1 -->
