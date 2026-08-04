@@ -1,14 +1,15 @@
 # win32-ipc Changelog
-<!-- latest_release 0.8.5 -->
-## [win32-ipc-0.8.5](https://github.com/chef/win32-ipc/tree/win32-ipc-0.8.5) (2026-08-04)
+<!-- latest_release 0.8.6 -->
+## [win32-ipc-0.8.6](https://github.com/chef/win32-ipc/tree/win32-ipc-0.8.6) (2026-08-04)
 
 #### Merged Pull Requests
-- Fix outdated VERSION assertion in test suite (unblocks PR #53 CI) [#54](https://github.com/chef/win32-ipc/pull/54) ([tpowell-progress](https://github.com/tpowell-progress))
+- CHEF-27680 Update and standardize copyright notices to Progress Software Corporation - copyright_update [#53](https://github.com/chef/win32-ipc/pull/53) ([clintoncwolfe](https://github.com/clintoncwolfe))
 <!-- latest_release -->
 <!-- release_rollup since=0.7.0 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-27680 Update and standardize copyright notices to Progress Software Corporation - copyright_update [#53](https://github.com/chef/win32-ipc/pull/53) ([clintoncwolfe](https://github.com/clintoncwolfe)) <!-- 0.8.6 -->
 - Fix outdated VERSION assertion in test suite (unblocks PR #53 CI) [#54](https://github.com/chef/win32-ipc/pull/54) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 0.8.5 -->
 - Add GitHub Security Actions Workflow [#48](https://github.com/chef/win32-ipc/pull/48) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 0.8.4 -->
 - set up ai assisted development workflow [#51](https://github.com/chef/win32-ipc/pull/51) ([rishichawda](https://github.com/rishichawda)) <!-- 0.8.3 -->
