@@ -17,7 +17,9 @@ class TC_Win32_Ipc < Test::Unit::TestCase
   end
 
   test "version is set to expected value" do
-    assert_equal("0.8.0", Ipc::VERSION)
+    version_file = File.join(File.dirname(__FILE__), "..", "VERSION")
+    expected_version = File.read(version_file).strip
+    assert_equal(expected_version, Ipc::VERSION)
   end
 
   test "handle method basic functionality" do
