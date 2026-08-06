@@ -1,2 +1,4 @@
-*                           @chef/msys-developers
-.expeditor/**               @chef/chef-infra-reviewers @chef/chef-infra-approvers @chef/chef-infra-owners
+# Order is important. The last matching pattern has the most precedence.
+
+*            @chef/chef-infra-reviewers @chef/chef-infra-approvers @chef/chef-infra-owners @jaymzh
+.expeditor/  @chef/build-engineering-systems-team
